@@ -6,7 +6,10 @@ class StringCalculator
 {
     public function add(String $number): String
     {
-        return "0";
+        if(empty($number)){
+            return "0";
+        }
+        return $number;
     }
 
 }
