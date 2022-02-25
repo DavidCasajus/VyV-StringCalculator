@@ -16,8 +16,8 @@ final class StringCalculatorTest extends TestCase
         $sc = new StringCalculator();
 
         $result = $sc->add("");
-
-        $this->assertEmpty($result);
+        echo $result;
+        $this->assertEquals($result, "0");
     }
 
 }
