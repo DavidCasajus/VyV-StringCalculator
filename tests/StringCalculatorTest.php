@@ -55,4 +55,14 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals("3.3", $result);
     }
 
+    /**
+     * @test
+     */
+    public function add_with_more_than_two_arguments()
+    {
+        $result = $this->sc->add("1.1,2.2,1.1");
+
+        $this->assertEquals("4.4", $result);
+    }
+
 }
