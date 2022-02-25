@@ -4,13 +4,13 @@ namespace Deg540\PHPTestingBoilerplate;
 
 class StringCalculator
 {
-    public function add(string $number): string
+    public function add(string $sentence): string
     {
-        if (empty($number)) {
+        if (empty($sentence)) {
             return "0";
         }
-
-        $numbers = explode(",", $number);
+        $sentence = str_replace("\n", ",", $sentence);
+        $numbers = explode(",", $sentence);
         $addResult = null;
         foreach ($numbers as $num) {
             $addResult = $addResult + $num;

@@ -65,4 +65,13 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals("4.4", $result);
     }
 
+    /**
+     * @test
+     */
+    public function add_two_numbers_separtes_by_newline_separator()
+    {
+        $result = $this->sc->add("1\n2.3");
+
+        $this->assertEquals("3.3", $result);
+    }
 }
