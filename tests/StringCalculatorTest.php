@@ -82,8 +82,18 @@ final class StringCalculatorTest extends TestCase
     public function slash_n_after_comma_should_return_error_position()
     {
         $result = $this->sc->add("175.2,\n35");
-        echo $result;
+
         $this->assertEquals("Number expected but \\n found at position 5.", $result);
+    }
+
+    /**
+     * @test
+     */
+    public function separator_at_the_end_should_return_error_message()
+    {
+        $result = $this->sc->add("1,3,");
+
+        $this->assertEquals("Number expected but not found.", $result);
     }
 
 }
