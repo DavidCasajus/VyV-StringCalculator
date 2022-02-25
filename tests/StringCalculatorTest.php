@@ -8,14 +8,19 @@ use Deg540\PHPTestingBoilerplate\StringCalculator;
 
 final class StringCalculatorTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->sc = new StringCalculator();
+    }
+
+
     /**
      * @test
      */
     public function empty_string_should_return_cero()
     {
-        $sc = new StringCalculator();
-
-        $result = $sc->add("");
+        $result = $this->sc->add("");
 
         $this->assertEquals("0", $result);
     }
@@ -25,9 +30,7 @@ final class StringCalculatorTest extends TestCase
      */
     public function one_number_should_return_same_number()
     {
-        $sc = new StringCalculator();
-
-        $result = $sc->add("1");
+        $result = $this->sc->add("1");
 
         $this->assertEquals("1", $result);
     }
@@ -37,11 +40,19 @@ final class StringCalculatorTest extends TestCase
      */
     public function one_number_with_decimal_should_return_same_number()
     {
-        $sc = new StringCalculator();
-
-        $result = $sc->add("1.1");
+        $result = $this->sc->add("1.1");
 
         $this->assertEquals("1.1", $result);
+    }
+
+    /**
+     * @test
+     */
+    public function add_two_numbers_separated_by_comma()
+    {
+        $result = $this->sc->add("1.1,2.2");
+
+        $this->assertEquals("3.3", $result);
     }
 
 }
