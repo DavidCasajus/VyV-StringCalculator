@@ -9,6 +9,7 @@ class StringCalculator
     public function add(string $sentence): string
     {
         $negatives = array();
+        $errorMessage =  "";
         if (empty($sentence)) {
             return "0";
         }
@@ -19,16 +20,26 @@ class StringCalculator
             $sentence = substr($sentence, stripos($sentence, "\n") + 1);
         }
         if (str_contains($sentence, $this->delimiter . "\n")) {
-            return "Number expected but \\n found at position " . strpos($sentence, ",\n") . ".";
+            $errorMessage = $errorMessage . "Number expected but \\n found at position " . strpos($sentence, ",\n") . ".\n";
         }
 
-        if (strripos($sentence, $this->delimiter) == strlen($sentence) - 1 && str_contains($sentence, $this->delimiter)) {
-            return "Number expected but not found.";
+        if (str_contains($sentence, $this->delimiter .$this->delimiter )) {
+            $errorMessage = $errorMessage. "Number expected but not found at position ".stripos($sentence,  $this->delimiter. $this->delimiter).".\n";
+        }
+
+        if ((strripos($sentence, $this->delimiter) == strlen($sentence) - 1 && str_contains($sentence, $this->delimiter))) {
+            $errorMessage = $errorMessage. "Number expected but not found at position ".strripos($sentence, $this->delimiter).".\n";
         }
 
 
         $sentence = str_replace("\n", $this->delimiter, $sentence);
         $numbers = explode($this->delimiter, $sentence);
+
+        while(($key = array_search('', $numbers)) !== false)
+        {
+                unset($numbers[$key]);
+        }
+
         $addResult = null;
         foreach ($numbers as $num) {
             if ($num < 0) {
@@ -38,8 +49,7 @@ class StringCalculator
             }
         }
 
-        echo sizeof($negatives);
-        if (sizeof($negatives) > 0) {
+        if (sizeof($negatives)) {
             $error = "";
             for ($i = 0; $i < sizeof($negatives); $i++)
             {
@@ -52,7 +62,11 @@ class StringCalculator
                     $error =$error. $negatives[$i].",";
                 }
             }
-            return "Negative not allowed : ". $error;
+            $errorMessage .=  "Negative not allowed : ". $error;
+        }
+        if($errorMessage != "")
+        {
+            return $errorMessage;
         }
         return $addResult;
     }
