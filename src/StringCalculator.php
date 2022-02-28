@@ -43,7 +43,6 @@ class StringCalculator
             $error = "";
             for ($i = 0; $i < sizeof($negatives); $i++)
             {
-                echo $i;
                 if($i == sizeof($negatives)-1)
                 {
                     $error = $error . $negatives[$i];

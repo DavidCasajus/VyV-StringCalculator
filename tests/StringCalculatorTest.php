@@ -126,4 +126,14 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals("Negative not allowed : -1", $result);
     }
+
+    /**
+     * @test
+     */
+    public function add_with_multiple_negative_values_should_return_error()
+    {
+        $result = $this->sc->add("-1,-2,3");
+
+        $this->assertEquals("Negative not allowed : -1,-2", $result);
+    }
 }
