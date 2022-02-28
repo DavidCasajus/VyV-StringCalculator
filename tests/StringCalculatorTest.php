@@ -106,4 +106,14 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals("3", $result);
     }
+
+    /**
+     * @test
+     */
+    public function custom_sepataror_with_multiple_numbers()
+    {
+        $result = $this->sc->add("//|\n1|2|3");
+
+        $this->assertEquals("6", $result);
+    }
 }
