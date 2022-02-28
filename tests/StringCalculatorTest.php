@@ -96,4 +96,14 @@ final class StringCalculatorTest extends TestCase
         $this->assertEquals("Number expected but not found.", $result);
     }
 
+
+    /**
+     * @test
+     */
+    public function custom_sepataror_introduced()
+    {
+        $result = $this->sc->add("//;\n1;2");
+
+        $this->assertEquals("3", $result);
+    }
 }
