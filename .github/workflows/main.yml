@@ -36,4 +36,4 @@ jobs:
           echo test, and deploy your project.
         
       - name: tests
-        run: ls ${{ github.workspace }}
+        run: ${{ github.workspace }}/tests/StringCalculatorTest.php
