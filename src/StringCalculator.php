@@ -24,7 +24,7 @@ class StringCalculator
         //check sentence format errors
         $errorMessage = $this->checkErrors($sentence);
 
-        //remove the newline deilimters and separate the numbers
+        //remove the newline delimters and separate the numbers
         $sentence = str_replace("\n", $this->delimiter, $sentence);
         $numbers = explode($this->delimiter, $sentence);
 
