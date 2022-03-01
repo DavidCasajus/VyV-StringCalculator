@@ -36,4 +36,4 @@ jobs:
           echo test, and deploy your project.
         
       - name: tests
-        run: tests/
+        run: tests/StringCalculatorTest/
